@@ -1,0 +1,1 @@
+This folder contains our first project, simple task adder, from the command-line. It is a simple todo list that can add tasks to a list and print them out.
