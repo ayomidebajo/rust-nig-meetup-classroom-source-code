@@ -1,0 +1,1 @@
+pub fn from_lib () {}
