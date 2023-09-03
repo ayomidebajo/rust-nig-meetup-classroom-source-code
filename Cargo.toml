@@ -1,4 +1,5 @@
 [workspace]
 members = [
-	"bin_project", "generics", "heap_stack_and_pointers","lib_project", "rust_playground", "todolist"
+	"bin_project", "generics", "heap_stack_and_pointers","lib_project", "rust_playground", "todolist", "word_counter"
 ]
+
