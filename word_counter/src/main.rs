@@ -15,6 +15,7 @@ impl WordCounter {
         let key = word.to_string();
 
         let count = self.0.entry(key).or_insert(0);
+        
         *count += 1;
     }
     fn display(&self, filter: u64) {
@@ -88,6 +89,11 @@ fn first_test() {
     assert_ne!(false, true);
     assert_eq!(1 + 1, 2);
 }
+
+
+
+
+
 
 
 
