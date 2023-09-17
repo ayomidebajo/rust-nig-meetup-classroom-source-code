@@ -116,6 +116,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d626bb9dae77e28219937af045c257c28bfd3f69333c512553507f5f9798cb76"
 
 [[package]]
+name = "smart-pointers"
+version = "0.1.0"
+
+[[package]]
 name = "todolist"
 version = "0.1.0"
 
