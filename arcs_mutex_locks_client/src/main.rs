@@ -1,5 +1,5 @@
-use std::net::TcpStream;
 use std::io::{Read, Write};
+use std::net::TcpStream;
 
 fn main() {
     // Connect to the server on localhost:8080
@@ -7,11 +7,15 @@ fn main() {
 
     // Send data to the server
     let message = "Hello from the client!";
-    stream.write_all(message.as_bytes()).expect("Failed to write to server");
+    stream
+        .write_all(message.as_bytes())
+        .expect("Failed to write to server");
 
     // Read the server's response
     let mut response = String::new();
-    stream.read_to_string(&mut response).expect("Failed to read response from server");
+    stream
+        .read_to_string(&mut response)
+        .expect("Failed to read response from server");
 
     println!("Received from server: {}", response);
 }

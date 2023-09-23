@@ -1,6 +1,6 @@
+use std::io::{Read, Write};
 use std::net::{TcpListener, TcpStream};
 use std::sync::{Arc, Mutex};
-use std::io::{Read, Write};
 use std::thread;
 
 fn main() {
@@ -35,7 +35,10 @@ fn main() {
 fn handle_client(mut stream: TcpStream, shared_data: Arc<Mutex<i32>>) {
     // Read data from the client
     let mut buffer = [0; 512];
-    stream.read(&mut buffer).expect("Failed to read from client");
+    match stream.read(&mut buffer) {
+        Ok(_) => (),
+        Err(e) => panic!("Failed to read from client. error: {:?}", e),
+    }
 
     // Print received data
     let received_data = String::from_utf8_lossy(&buffer);
@@ -48,8 +51,13 @@ fn handle_client(mut stream: TcpStream, shared_data: Arc<Mutex<i32>>) {
     *data += 1;
 
     // Respond to the client with the updated data
-    let response = format!("Server received: {}. Shared data is now: {}", received_data, *data);
-    stream.write_all(response.as_bytes()).expect("Failed to write to client");
+    let response = format!(
+        "Server received: {}. Shared data is now: {}",
+        received_data, *data
+    );
+    stream
+        .write_all(response.as_bytes())
+        .expect("Failed to write to client");
 
     // Close the connection
     stream.flush().expect("Failed to flush");
