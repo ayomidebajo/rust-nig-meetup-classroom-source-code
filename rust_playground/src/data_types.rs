@@ -29,7 +29,7 @@ pub fn data_types_function () { // pub keyword here
 
 
 	let hello = " hello";
-	const hello_static: &str = "hello static";
+	const _HELLO_STATIC: &str = "hello static";
 	let mut parent_string = String::from("parent");
 	parent_string.push_str(hello);
 	let child_string = hello;

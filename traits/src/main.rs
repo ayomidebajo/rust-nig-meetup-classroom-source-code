@@ -53,7 +53,7 @@ fn all_animals_eat(animals: Vec<Box<dyn AnimalBehaviour>>) {
 }
 
 // Using functions with traits
-fn all_animals_sound(animal: impl AnimalBehaviour) {
+fn _all_animals_sound(animal: impl AnimalBehaviour) {
     animal.greet();
     animal.eat();
 }
@@ -94,20 +94,20 @@ fn main() {
 
     // Illustration of the limitation of generics
     // This code is not suppose to compile, when dog is uncommented !
-    let animals = vec![
+    let _animals = vec![
         Human::new("Marho".to_string()),
         Human::new("Bekka".to_string()),
         // Dog::new("Max".to_string()),
     ];
     // using into while specifying the type already on the "left hand side"
-    let stri: String = "st".into();
+    let _stri: String = "st".into();
 
     // using turbo fish syntax. 
     // In this case we don't need to specify the type on the left hand side.
-    let stri = Into::<String>::into("str");
+    let _stri = Into::<String>::into("str");
 
     // Illustrait the safeguard that traits offer
-    let wrong_objects = vec![String::from("wrong"), String::from("code")];
+    let _wrong_objects = vec![String::from("wrong"), String::from("code")];
 
     // This function should give an uncompiled error when uncommented
     // generic_with_trait_bound(wrong_objects)

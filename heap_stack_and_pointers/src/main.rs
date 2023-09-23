@@ -1,13 +1,13 @@
 fn main() {
     // To coerce a reference (&T) or mutable reference (&mut T)
     let my_num = 10;
-    let my_num_ptr: *const i32 = &my_num;
+    let _my_num_ptr: *const i32 = &my_num;
 
     let mut my_mutable_num = 15;
     let my_mutable_num_ptr: *mut i32 = &mut my_mutable_num;
 
     let my_string = String::from("hello");
-    let my_second_string = my_string;
+    let _my_second_string = my_string;
 
     unsafe {
           println!("{:?}", my_mutable_num_ptr.as_ref().expect("error"));  
@@ -25,11 +25,12 @@ fn main() {
 
     // you can create scopes using brackets
    
-     let mut parent_string = String::from("Parent");
+     let parent_string = String::from("Parent");
 
-    &mut parent_string.push_str("child");
+     // push to string
+    // &mut parent_string.push_str("child");
 
-    let child_string = &parent_string;
+    let _child_string = &parent_string;
 
     println!("{:?}", parent_string);
 

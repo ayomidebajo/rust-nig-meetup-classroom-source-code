@@ -1,5 +1,7 @@
 use std::fmt::Debug;
 
+
+#[allow(unused)]
 fn main() {
     let list = vec![1, 2, 3, 4, 5];
     let list_str = vec!["a", "b", "c", "d"];
@@ -28,19 +30,23 @@ fn main() {
     
 }
 
+
+#[allow(unused)]
 #[derive(Debug)]
 struct Pc {
     name: String,
     model: String
 }
 
+
+#[allow(unused)]
 #[derive(Debug)]
 struct Customlamp<T> {
     name: String,
     lamp: Lamp<T>
 }
 
-fn list_numbers_only (list: &[i32]) {
+fn _list_numbers_only (list: &[i32]) {
     for item in list {
         println!("item {item}");
     }
@@ -52,6 +58,8 @@ fn generic_list<T: Debug> (list: &[T]) {
     }
 }
 
+
+#[allow(unused)]
 #[derive(Debug)]
 enum Lamp<T> {
     TableLamp,

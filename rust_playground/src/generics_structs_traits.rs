@@ -57,7 +57,7 @@ trait Gender {
     fn previous_gender(&self) -> String;
 }
 
-fn gender<T: Gender> (gender: impl Gender) {
+fn _gender<T: Gender> (gender: impl Gender) {
     gender.current_gender();
 }
 
@@ -80,9 +80,9 @@ struct Point <T> {
 }
 
 
-struct PartOfSentence <'a> {
-    part: &'a str
-}
+// struct PartOfSentence <'a> {
+//     part: &'a str
+// }
 
 
 impl Gender for FootballPlayer {

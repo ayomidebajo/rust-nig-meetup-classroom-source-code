@@ -3,12 +3,16 @@
 
 use std::rc::Rc;
 
+
+#[allow(unused)]
 #[derive(Debug)]
 struct Node {
     data: i32,
     next: Option<Rc<Node>>,
 }
 
+
+#[allow(unused)]
 #[derive(Debug)]
 struct LinkedList {
     head: Node,
@@ -54,12 +58,12 @@ fn main() {
         })),
     });
 
-    let b = Node {
+    let _b = Node {
         data: 3,
         next: Some(Rc::clone(&a)),
     };
 
-    let c = Node {
+    let _c = Node {
         data: 4,
         next: Some(Rc::clone(&a)),
     };
@@ -71,7 +75,7 @@ fn main() {
     );
     {
         // Increasing count in a scope
-        let d = Node {
+        let _d = Node {
             data: 20,
             next: Some(Rc::clone(&a)),
         };
