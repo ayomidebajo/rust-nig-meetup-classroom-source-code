@@ -20,6 +20,7 @@ fn client_handler(message: &str, mut stream: TcpStream) {
 
     // Read the server's response, this logs the shared data which is the overall data/state of the application
     let mut response = String::new();
+    
     stream
         .read_to_string(&mut response)
         .expect("Failed to read response from server");
