@@ -35,6 +35,7 @@ fn main() {
 fn handle_client(mut stream: TcpStream, shared_data: Arc<Mutex<i32>>) {
     // Read data from the client
     let mut buffer = [0; 512];
+    
     match stream.read(&mut buffer) {
         Ok(_) => (),
         Err(e) => panic!("Failed to read from client. error: {:?}", e),

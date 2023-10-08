@@ -1,5 +1,5 @@
 [workspace]
 members = [
-	"bin_project", "generics", "heap_stack_and_pointers","lib_project", "rust_playground", "todolist", "word_counter", "traits", "smart-pointers", "arcs_mutex_locks_server", "arcs_mutex_locks_client"
+	"bin_project", "generics", "heap_stack_and_pointers","lib_project", "rust_playground", "todolist", "word_counter", "traits", "smart-pointers", "arcs_mutex_locks_server", "arcs_mutex_locks_client", "futures"
 ]
 
