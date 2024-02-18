@@ -7,11 +7,34 @@ trait AnimalBehaviour {
 
     // Trait with no default implementation
     fn greet(&self) {}
+
+}
+
+trait Behaviour {
+    // associated method
+    fn movement() {}
+    // instance method
+    fn breathe(&self) {}
+}
+
+impl Behaviour for Human {
+    fn movement() {
+        println!("I can move with my legs, bro")
+    }
+
+    fn breathe(&self) {
+        println!("Breathe in, Breathe out");
+    }
 }
 
 
 struct Human {
     name: String,
+}
+
+#[derive(Copy, Clone)]
+struct Numb {
+    interger: i32
 }
 
 // implementing a struct
@@ -21,10 +44,14 @@ impl Human {
     }
 }
 
-// Implemenating a trait on an object
+// Implemenating a trait on an type
 impl AnimalBehaviour for Human {
     fn greet(&self) {
         println!("Hello, my name is {}", self.name);
+    }
+
+    fn eat(&self) {
+        println!("This is a human eating");
     }
 }
 
@@ -38,7 +65,7 @@ impl Dog {
     }
 }
 
-// Implemenating a trait on an object
+// Implemenating a trait on an type
 impl AnimalBehaviour for Dog {
     fn greet(&self) {
         println!("Woof, my name is {}", self.name)
@@ -46,7 +73,7 @@ impl AnimalBehaviour for Dog {
 }
 
 // Using functions with traits
-fn all_animals_eat(animals: Vec<Box<dyn AnimalBehaviour>>) {
+fn all_animals_eat(animals: Vec<&dyn AnimalBehaviour>) {
     for animal in animals.iter() {
         animal.eat()
     }
@@ -70,12 +97,20 @@ where
 }
 
 fn main() {
+    // using instance methods
+    let human = Human::new("Bola".to_string());
+    human.breathe();
+
+    // using associated methods
+    Human::movement();
+
     // creating a collection of objects that use the trait
-    let animals: Vec<Box<dyn AnimalBehaviour>> = vec![
-        Box::new(Human::new("Marho".to_string())),
-        Box::new(Dog::new("Max".to_string())),
-        Box::new(Human::new("Bekka".to_string())),
-    ];
+    let human1 = Human::new("Marho".to_string());
+    let dog1 = Dog::new("Max".to_string());
+    let human2 = Human::new("Bekka".to_string());
+    let animals: Vec<&dyn AnimalBehaviour> = vec![&human1, &dog1, &human2];
+    // let all_animals = vec![human1, dog1];
+    // let rand_vec = vec![1, 2];
 
     // Using function
     all_animals_eat(animals);
@@ -102,7 +137,7 @@ fn main() {
     // using into while specifying the type already on the "left hand side"
     let _stri: String = "st".into();
 
-    // using turbo fish syntax. 
+    // using turbo fish syntax.
     // In this case we don't need to specify the type on the left hand side.
     let _stri = Into::<String>::into("str");
 
